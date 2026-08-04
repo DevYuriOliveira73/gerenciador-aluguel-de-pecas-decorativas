@@ -24,11 +24,11 @@ Isso pode gerar problemas como:
 ## Funcionalidades principais
 
 - [x] Cadastrar material
-- [ ] Cadastrar cliente
-- [ ] Cadastrar pedido
-- [ ] Informar tema da festa
-- [ ] Informar data do evento
-- [ ] Informar data de retirada e devolução
+- [x] Cadastrar cliente
+- [x] Cadastrar pedido
+- [x] Informar tema da festa
+- [x] Informar data do evento
+- [x] Informar data de retirada e devolução
 - [ ] Registrar pagamento de entrada
 - [ ] Registrar pagamento restante
 - [ ] Consultar pedidos por data
@@ -51,6 +51,7 @@ Isso pode gerar problemas como:
 - Todo pedido deve ter nome do cliente, data do evento, tema e valor.
 - Um pedido não pode ser finalizado sem registro de devolução.
 - O sistema deve permitir consultar pedidos por período.
+- Permitir multiplas formas de pagamento.
 
 ## 7. Dados importantes
 

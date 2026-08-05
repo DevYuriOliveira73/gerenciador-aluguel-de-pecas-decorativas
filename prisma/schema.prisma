@@ -11,3 +11,70 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Categoria {
+  id        Int    @id @default(autoincrement())
+  nome      String @unique
+  descricao String
+  pecas     Peca[]
+
+  createdAt DateTime @default(now())
+}
+
+model Peca {
+  id           Int       @id @default(autoincrement())
+  nome         String
+  descricao    String
+  quantidade   Int
+  categoria    Categoria @relation(fields: [categoria_id], references: [id], onDelete: Restrict)
+  categoria_id Int
+  // disponivel   Boolean   @default(true) precisa de uma logica para definir se a peça está disponivel ou não
+  imagem       String
+
+  itensAluguel ItemAluguel[]
+
+  createdAt DateTime @default(now())
+}
+
+model Cliente {
+  id        Int       @id @default(autoincrement())
+  nome      String
+  sobrenome String
+  email     String    @unique
+  telefone  String
+  alugueis  Aluguel[]
+
+  endereco String
+
+  cpf String @unique
+}
+
+model Aluguel {
+  id         Int     @id @default(autoincrement())
+  cliente    Cliente @relation(fields: [cliente_id], references: [id], onDelete: Restrict)
+  cliente_id Int
+
+  data_inicio DateTime
+  data_fim    DateTime
+
+  preco Decimal @db.Decimal(10, 2)
+
+  devolvido Boolean @default(false)
+
+  itensAluguel ItemAluguel[]
+
+  createdAt DateTime @default(now())
+}
+
+model ItemAluguel {
+  id         Int     @id @default(autoincrement())
+  aluguel    Aluguel @relation(fields: [aluguel_id], references: [id], onDelete: Restrict)
+  aluguel_id Int
+
+  peca    Peca @relation(fields: [peca_id], references: [id], onDelete: Restrict)
+  peca_id Int
+
+  quantidade Int
+
+  @@unique([aluguel_id, peca_id])
+}

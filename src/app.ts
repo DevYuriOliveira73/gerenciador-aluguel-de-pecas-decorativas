@@ -1,19 +1,19 @@
 import express from "express";
+import router from "./routes/index";
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-//routes import
-import pecaRouter from "./routes/peca.route"
-import clienteRouter from "./routes/cliente.route"
-import pedidoRouter from "./routes/pedido.route"
+app.use("/api", router);
 
+app.use((req, res) => {
+  res.status(404).json({ error: "Rota não encontrada" });
+});
 
-//routes declaration
-app.use('/api/v1', pecaRouter)
-app.use('/api/v1', clienteRouter)
-app.use('/api/v1', pedidoRouter)
-
+app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error(err);
+  res.status(500).json({ error: "Erro interno do servidor" });
+});
 
 export default app;

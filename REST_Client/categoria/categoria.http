@@ -8,8 +8,8 @@ POST {{baseUrl}}/categorias
 Content-Type: application/json
 
 {
-  "nome" : "Arco",
-  "descricao" : "Estrutura metalica para colocar tecido"
+  "nome" : "Boleira",
+  "descricao" : "Estrutura para bolo"
 }
 
 ### =========================================

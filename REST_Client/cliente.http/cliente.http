@@ -8,12 +8,12 @@ POST {{baseUrl}}/clientes
 Content-Type: application/json
 
 {
-  "nome": "Maria",
+  "nome": "Mario",
   "sobrenome": "Oliveira",
   "email": "maria.oliveira@email.com",
   "telefone": "85999998888",
   "endereco": "Rua das Flores, 123 - Fortaleza/CE",
-  "cpf": "00844435376"
+  "cpf": "00844435333"
 }
 
 ### =========================================

@@ -1,0 +1,19 @@
+@baseUrl = http://localhost:3001/api
+
+
+### =========================================
+### POSTS - Criar CATEGORIA
+### =========================================
+POST {{baseUrl}}/categorias
+Content-Type: application/json
+
+{
+  "nome" : "Arco",
+  "descricao" : "Estrutura metalica para colocar tecido"
+}
+
+### =========================================
+### GET - Listar todas
+### =========================================
+GET {{baseUrl}}/categorias
+Content-Type: application/json

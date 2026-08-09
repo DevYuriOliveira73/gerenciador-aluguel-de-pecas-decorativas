@@ -1,5 +1,5 @@
 import {prisma} from "../../database/prisma";
-import { RequestCategoriaDTO } from "./categoria.dto";
+import { RequestCategoriaDTO, UpdateRequestCategoriaDTO } from "./categoria.dto";
 
 // export async function createPostRepository(data: CreatePostDTO) : Promise<PostResponseDTO> {
 
@@ -25,8 +25,27 @@ export async function getCategoria(nome: string): Promise<any> {
   return categoria;
 }
 
+
 export async function getAllCategorias(): Promise<any> {
   const get_all_categoria = await prisma.categoria.findMany()
 
   return get_all_categoria;
 }
+
+
+export async function updateCategoria(id: number, data: UpdateRequestCategoriaDTO) {
+  const updateCategoria = await prisma.categoria.update({
+    where: {id: id},
+    data: {
+      ...data
+    }
+  })
+
+  return updateCategoria;
+}
+
+
+// const updateUser = await prisma.user.update({
+//   where: { email: "viola@prisma.io" },
+//   data: { name: "Viola the Magnificent" },
+// });

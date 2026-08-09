@@ -35,3 +35,26 @@ export async function getCategoriaController(req: Request, res: Response, next: 
     next(error)
   }
 }
+
+export async function updateCategoriaController(req: Request, res: Response, next: NextFunction) {
+
+  try {
+    const {nome, descricao} = req.body as RequestCategoriaDTO
+    const id = Number(req.params.id)
+
+    if (!nome || !descricao) {
+      return res.status(400).json({
+        message: 'Nome e descrição são obrigatórios'
+      })
+    }
+
+    const result = await ServiceCategoria.updateCategoriaService(id, {nome, descricao})
+
+    return res.status(200).json(result)
+
+  } catch (error) {
+    console.error({error});
+    next(error)
+  }
+
+}

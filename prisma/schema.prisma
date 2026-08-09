@@ -25,9 +25,9 @@ model Peca {
   id           Int       @id @default(autoincrement())
   nome         String
   descricao    String
-  quantidade   Int
+  quantidade   Int       @db.Integer
   categoria    Categoria @relation(fields: [categoria_id], references: [id], onDelete: Restrict)
-  categoria_id Int
+  categoria_id Int       @db.Integer
   // disponivel   Boolean   @default(true) precisa de uma logica para definir se a peça está disponivel ou não
   imagem       String
 
@@ -40,41 +40,41 @@ model Cliente {
   id        Int       @id @default(autoincrement())
   nome      String
   sobrenome String
-  email     String    @unique
-  telefone  String
+  email     String    @unique @db.VarChar(64)
+  telefone  String    @db.Char(11)
   alugueis  Aluguel[]
 
   endereco String
 
-  cpf String @unique
+  cpf      String @unique @db.Char(11)
 }
 
 model Aluguel {
-  id         Int     @id @default(autoincrement())
-  cliente    Cliente @relation(fields: [cliente_id], references: [id], onDelete: Restrict)
-  cliente_id Int
+  id              Int     @id @default(autoincrement())
+  cliente         Cliente @relation(fields: [cliente_id], references: [id], onDelete: Restrict)
+  cliente_id      Int
 
-  data_inicio DateTime
-  data_fim    DateTime
+  data_inicio     DateTime
+  data_fim        DateTime
 
-  preco Decimal @db.Decimal(10, 2)
+  preco           Decimal @db.Decimal(10, 2)
 
-  devolvido Boolean @default(false)
+  devolvido       Boolean @default(false) @db.Boolean
 
-  itensAluguel ItemAluguel[]
+  itensAluguel    ItemAluguel[]
 
-  createdAt DateTime @default(now())
+  createdAt       DateTime @default(now())
 }
 
 model ItemAluguel {
-  id         Int     @id @default(autoincrement())
-  aluguel    Aluguel @relation(fields: [aluguel_id], references: [id], onDelete: Restrict)
-  aluguel_id Int
+  id            Int     @id @default(autoincrement())
+  aluguel       Aluguel @relation(fields: [aluguel_id], references: [id], onDelete: Restrict)
+  aluguel_id    Int
 
-  peca    Peca @relation(fields: [peca_id], references: [id], onDelete: Restrict)
-  peca_id Int
+  peca          Peca @relation(fields: [peca_id], references: [id], onDelete: Restrict)
+  peca_id       Int
 
-  quantidade Int
+  quantidade    Int
 
   @@unique([aluguel_id, peca_id])
 }

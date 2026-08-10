@@ -25,6 +25,15 @@ export async function getCategoria(nome: string): Promise<any> {
   return categoria;
 }
 
+export async function getIdCategoria(id: number): Promise<any> {
+  const categoria = await prisma.categoria.findUnique({
+    where: {
+      id: id
+    }
+  })
+  return categoria;
+}
+
 
 export async function getAllCategorias(): Promise<any> {
   const get_all_categoria = await prisma.categoria.findMany()

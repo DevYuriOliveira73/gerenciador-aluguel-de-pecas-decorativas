@@ -1,0 +1,22 @@
+@baseUrl = http://localhost:3001/api
+@categoria_id = 1
+
+
+### =========================================
+### POST - Criar PEÇA
+### =========================================
+POST {{baseUrl}}/pecas
+Content-Type: application/json
+
+{
+  "nome": "Bandeja yuri",
+  "descricao": "Mesa redonda branca, 8 lugares",
+  "quantidade": 10,
+  "categoria_id": {{categoria_id}}
+}
+
+### =========================================
+### GET - pUXAR PECAS
+### =========================================
+GET  {{baseUrl}}/pecas
+Content-Type: application/json

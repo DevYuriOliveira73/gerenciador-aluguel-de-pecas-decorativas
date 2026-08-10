@@ -25,15 +25,17 @@ model Peca {
   id           Int       @id @default(autoincrement())
   nome         String
   descricao    String
-  quantidade   Int       @db.Integer
+  quantidade   Int       
   categoria    Categoria @relation(fields: [categoria_id], references: [id], onDelete: Restrict)
-  categoria_id Int       @db.Integer
+  categoria_id Int       
   // disponivel   Boolean   @default(true) precisa de uma logica para definir se a peça está disponivel ou não
-  imagem       String
+  imagem       String?
 
   itensAluguel ItemAluguel[]
 
   createdAt DateTime @default(now())
+
+  @@unique([nome, descricao])
 }
 
 model Cliente {

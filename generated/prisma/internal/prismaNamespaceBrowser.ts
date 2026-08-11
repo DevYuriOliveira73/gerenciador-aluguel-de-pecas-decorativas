@@ -91,6 +91,7 @@ export const PecaScalarFieldEnum = {
   quantidade: 'quantidade',
   categoria_id: 'categoria_id',
   imagem: 'imagem',
+  deletedAt: 'deletedAt',
   createdAt: 'createdAt'
 } as const
 

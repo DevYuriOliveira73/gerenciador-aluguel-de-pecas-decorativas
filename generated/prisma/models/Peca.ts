@@ -45,6 +45,7 @@ export type PecaMinAggregateOutputType = {
   quantidade: number | null
   categoria_id: number | null
   imagem: string | null
+  deletedAt: Date | null
   createdAt: Date | null
 }
 
@@ -55,6 +56,7 @@ export type PecaMaxAggregateOutputType = {
   quantidade: number | null
   categoria_id: number | null
   imagem: string | null
+  deletedAt: Date | null
   createdAt: Date | null
 }
 
@@ -65,6 +67,7 @@ export type PecaCountAggregateOutputType = {
   quantidade: number
   categoria_id: number
   imagem: number
+  deletedAt: number
   createdAt: number
   _all: number
 }
@@ -89,6 +92,7 @@ export type PecaMinAggregateInputType = {
   quantidade?: true
   categoria_id?: true
   imagem?: true
+  deletedAt?: true
   createdAt?: true
 }
 
@@ -99,6 +103,7 @@ export type PecaMaxAggregateInputType = {
   quantidade?: true
   categoria_id?: true
   imagem?: true
+  deletedAt?: true
   createdAt?: true
 }
 
@@ -109,6 +114,7 @@ export type PecaCountAggregateInputType = {
   quantidade?: true
   categoria_id?: true
   imagem?: true
+  deletedAt?: true
   createdAt?: true
   _all?: true
 }
@@ -206,6 +212,7 @@ export type PecaGroupByOutputType = {
   quantidade: number
   categoria_id: number
   imagem: string | null
+  deletedAt: Date | null
   createdAt: Date
   _count: PecaCountAggregateOutputType | null
   _avg: PecaAvgAggregateOutputType | null
@@ -239,6 +246,7 @@ export type PecaWhereInput = {
   quantidade?: Prisma.IntFilter<"Peca"> | number
   categoria_id?: Prisma.IntFilter<"Peca"> | number
   imagem?: Prisma.StringNullableFilter<"Peca"> | string | null
+  deletedAt?: Prisma.DateTimeNullableFilter<"Peca"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Peca"> | Date | string
   categoria?: Prisma.XOR<Prisma.CategoriaScalarRelationFilter, Prisma.CategoriaWhereInput>
   itensAluguel?: Prisma.ItemAluguelListRelationFilter
@@ -251,6 +259,7 @@ export type PecaOrderByWithRelationInput = {
   quantidade?: Prisma.SortOrder
   categoria_id?: Prisma.SortOrder
   imagem?: Prisma.SortOrderInput | Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   categoria?: Prisma.CategoriaOrderByWithRelationInput
   itensAluguel?: Prisma.ItemAluguelOrderByRelationAggregateInput
@@ -267,6 +276,7 @@ export type PecaWhereUniqueInput = Prisma.AtLeast<{
   quantidade?: Prisma.IntFilter<"Peca"> | number
   categoria_id?: Prisma.IntFilter<"Peca"> | number
   imagem?: Prisma.StringNullableFilter<"Peca"> | string | null
+  deletedAt?: Prisma.DateTimeNullableFilter<"Peca"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Peca"> | Date | string
   categoria?: Prisma.XOR<Prisma.CategoriaScalarRelationFilter, Prisma.CategoriaWhereInput>
   itensAluguel?: Prisma.ItemAluguelListRelationFilter
@@ -279,6 +289,7 @@ export type PecaOrderByWithAggregationInput = {
   quantidade?: Prisma.SortOrder
   categoria_id?: Prisma.SortOrder
   imagem?: Prisma.SortOrderInput | Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.PecaCountOrderByAggregateInput
   _avg?: Prisma.PecaAvgOrderByAggregateInput
@@ -297,6 +308,7 @@ export type PecaScalarWhereWithAggregatesInput = {
   quantidade?: Prisma.IntWithAggregatesFilter<"Peca"> | number
   categoria_id?: Prisma.IntWithAggregatesFilter<"Peca"> | number
   imagem?: Prisma.StringNullableWithAggregatesFilter<"Peca"> | string | null
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Peca"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Peca"> | Date | string
 }
 
@@ -305,6 +317,7 @@ export type PecaCreateInput = {
   descricao: string
   quantidade: number
   imagem?: string | null
+  deletedAt?: Date | string | null
   createdAt?: Date | string
   categoria: Prisma.CategoriaCreateNestedOneWithoutPecasInput
   itensAluguel?: Prisma.ItemAluguelCreateNestedManyWithoutPecaInput
@@ -317,6 +330,7 @@ export type PecaUncheckedCreateInput = {
   quantidade: number
   categoria_id: number
   imagem?: string | null
+  deletedAt?: Date | string | null
   createdAt?: Date | string
   itensAluguel?: Prisma.ItemAluguelUncheckedCreateNestedManyWithoutPecaInput
 }
@@ -326,6 +340,7 @@ export type PecaUpdateInput = {
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   quantidade?: Prisma.IntFieldUpdateOperationsInput | number
   imagem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoria?: Prisma.CategoriaUpdateOneRequiredWithoutPecasNestedInput
   itensAluguel?: Prisma.ItemAluguelUpdateManyWithoutPecaNestedInput
@@ -338,6 +353,7 @@ export type PecaUncheckedUpdateInput = {
   quantidade?: Prisma.IntFieldUpdateOperationsInput | number
   categoria_id?: Prisma.IntFieldUpdateOperationsInput | number
   imagem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   itensAluguel?: Prisma.ItemAluguelUncheckedUpdateManyWithoutPecaNestedInput
 }
@@ -349,6 +365,7 @@ export type PecaCreateManyInput = {
   quantidade: number
   categoria_id: number
   imagem?: string | null
+  deletedAt?: Date | string | null
   createdAt?: Date | string
 }
 
@@ -357,6 +374,7 @@ export type PecaUpdateManyMutationInput = {
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   quantidade?: Prisma.IntFieldUpdateOperationsInput | number
   imagem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -367,6 +385,7 @@ export type PecaUncheckedUpdateManyInput = {
   quantidade?: Prisma.IntFieldUpdateOperationsInput | number
   categoria_id?: Prisma.IntFieldUpdateOperationsInput | number
   imagem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -392,6 +411,7 @@ export type PecaCountOrderByAggregateInput = {
   quantidade?: Prisma.SortOrder
   categoria_id?: Prisma.SortOrder
   imagem?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -408,6 +428,7 @@ export type PecaMaxOrderByAggregateInput = {
   quantidade?: Prisma.SortOrder
   categoria_id?: Prisma.SortOrder
   imagem?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -418,6 +439,7 @@ export type PecaMinOrderByAggregateInput = {
   quantidade?: Prisma.SortOrder
   categoria_id?: Prisma.SortOrder
   imagem?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -478,6 +500,10 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type PecaCreateNestedOneWithoutItensAluguelInput = {
   create?: Prisma.XOR<Prisma.PecaCreateWithoutItensAluguelInput, Prisma.PecaUncheckedCreateWithoutItensAluguelInput>
   connectOrCreate?: Prisma.PecaCreateOrConnectWithoutItensAluguelInput
@@ -497,6 +523,7 @@ export type PecaCreateWithoutCategoriaInput = {
   descricao: string
   quantidade: number
   imagem?: string | null
+  deletedAt?: Date | string | null
   createdAt?: Date | string
   itensAluguel?: Prisma.ItemAluguelCreateNestedManyWithoutPecaInput
 }
@@ -507,6 +534,7 @@ export type PecaUncheckedCreateWithoutCategoriaInput = {
   descricao: string
   quantidade: number
   imagem?: string | null
+  deletedAt?: Date | string | null
   createdAt?: Date | string
   itensAluguel?: Prisma.ItemAluguelUncheckedCreateNestedManyWithoutPecaInput
 }
@@ -547,6 +575,7 @@ export type PecaScalarWhereInput = {
   quantidade?: Prisma.IntFilter<"Peca"> | number
   categoria_id?: Prisma.IntFilter<"Peca"> | number
   imagem?: Prisma.StringNullableFilter<"Peca"> | string | null
+  deletedAt?: Prisma.DateTimeNullableFilter<"Peca"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Peca"> | Date | string
 }
 
@@ -555,6 +584,7 @@ export type PecaCreateWithoutItensAluguelInput = {
   descricao: string
   quantidade: number
   imagem?: string | null
+  deletedAt?: Date | string | null
   createdAt?: Date | string
   categoria: Prisma.CategoriaCreateNestedOneWithoutPecasInput
 }
@@ -566,6 +596,7 @@ export type PecaUncheckedCreateWithoutItensAluguelInput = {
   quantidade: number
   categoria_id: number
   imagem?: string | null
+  deletedAt?: Date | string | null
   createdAt?: Date | string
 }
 
@@ -590,6 +621,7 @@ export type PecaUpdateWithoutItensAluguelInput = {
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   quantidade?: Prisma.IntFieldUpdateOperationsInput | number
   imagem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoria?: Prisma.CategoriaUpdateOneRequiredWithoutPecasNestedInput
 }
@@ -601,6 +633,7 @@ export type PecaUncheckedUpdateWithoutItensAluguelInput = {
   quantidade?: Prisma.IntFieldUpdateOperationsInput | number
   categoria_id?: Prisma.IntFieldUpdateOperationsInput | number
   imagem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -610,6 +643,7 @@ export type PecaCreateManyCategoriaInput = {
   descricao: string
   quantidade: number
   imagem?: string | null
+  deletedAt?: Date | string | null
   createdAt?: Date | string
 }
 
@@ -618,6 +652,7 @@ export type PecaUpdateWithoutCategoriaInput = {
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   quantidade?: Prisma.IntFieldUpdateOperationsInput | number
   imagem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   itensAluguel?: Prisma.ItemAluguelUpdateManyWithoutPecaNestedInput
 }
@@ -628,6 +663,7 @@ export type PecaUncheckedUpdateWithoutCategoriaInput = {
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   quantidade?: Prisma.IntFieldUpdateOperationsInput | number
   imagem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   itensAluguel?: Prisma.ItemAluguelUncheckedUpdateManyWithoutPecaNestedInput
 }
@@ -638,6 +674,7 @@ export type PecaUncheckedUpdateManyWithoutCategoriaInput = {
   descricao?: Prisma.StringFieldUpdateOperationsInput | string
   quantidade?: Prisma.IntFieldUpdateOperationsInput | number
   imagem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -679,6 +716,7 @@ export type PecaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   quantidade?: boolean
   categoria_id?: boolean
   imagem?: boolean
+  deletedAt?: boolean
   createdAt?: boolean
   categoria?: boolean | Prisma.CategoriaDefaultArgs<ExtArgs>
   itensAluguel?: boolean | Prisma.Peca$itensAluguelArgs<ExtArgs>
@@ -692,6 +730,7 @@ export type PecaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   quantidade?: boolean
   categoria_id?: boolean
   imagem?: boolean
+  deletedAt?: boolean
   createdAt?: boolean
   categoria?: boolean | Prisma.CategoriaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["peca"]>
@@ -703,6 +742,7 @@ export type PecaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   quantidade?: boolean
   categoria_id?: boolean
   imagem?: boolean
+  deletedAt?: boolean
   createdAt?: boolean
   categoria?: boolean | Prisma.CategoriaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["peca"]>
@@ -714,10 +754,11 @@ export type PecaSelectScalar = {
   quantidade?: boolean
   categoria_id?: boolean
   imagem?: boolean
+  deletedAt?: boolean
   createdAt?: boolean
 }
 
-export type PecaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "descricao" | "quantidade" | "categoria_id" | "imagem" | "createdAt", ExtArgs["result"]["peca"]>
+export type PecaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "descricao" | "quantidade" | "categoria_id" | "imagem" | "deletedAt" | "createdAt", ExtArgs["result"]["peca"]>
 export type PecaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   categoria?: boolean | Prisma.CategoriaDefaultArgs<ExtArgs>
   itensAluguel?: boolean | Prisma.Peca$itensAluguelArgs<ExtArgs>
@@ -743,6 +784,7 @@ export type $PecaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     quantidade: number
     categoria_id: number
     imagem: string | null
+    deletedAt: Date | null
     createdAt: Date
   }, ExtArgs["result"]["peca"]>
   composites: {}
@@ -1175,6 +1217,7 @@ export interface PecaFieldRefs {
   readonly quantidade: Prisma.FieldRef<"Peca", 'Int'>
   readonly categoria_id: Prisma.FieldRef<"Peca", 'Int'>
   readonly imagem: Prisma.FieldRef<"Peca", 'String'>
+  readonly deletedAt: Prisma.FieldRef<"Peca", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Peca", 'DateTime'>
 }
     

@@ -30,7 +30,25 @@ export async function getAllPecaController(req: Request, res: Response, next: Ne
 
     return res.status(200).json(result)
   } catch (error) {
-    console.error("Error in get pecas:", error);
+    console.error("Error in getAllPecaController:", error);
+    next(error)
+  }
+}
+
+
+export async function desativarPecaController(req: Request, res: Response, next: NextFunction) {
+  try {
+    if (!req.params.id) {
+      throw new Error(`id é necessário`)
+    }
+
+    const id = Number(req.params.id)
+
+    const pecaDesativada = await ServicePeca.desativarPeca(id)
+
+    res.status(200).json(pecaDesativada)
+  } catch (error) {
+    console.error("Error in desativarPecaController:", error);
     next(error)
   }
 }

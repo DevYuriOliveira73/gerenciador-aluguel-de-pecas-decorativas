@@ -6,4 +6,7 @@ const r = Router();
 r.post("/", PecaController.createPecaController);
 r.get("/", PecaController.getAllPecaController);
 
+//r.patch('/:id', PecaController.atualizarPecaController)         // atualiza campos genéricos (nome, preço...)
+r.patch('/:id/desativar', PecaController.desativarPecaController) // ação específica: desativar
+
 export default r;

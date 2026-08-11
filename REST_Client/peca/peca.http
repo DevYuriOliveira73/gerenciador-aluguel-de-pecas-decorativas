@@ -1,5 +1,6 @@
 @baseUrl = http://localhost:3001/api
 @categoria_id = 1
+@peca_id = 1
 
 
 ### =========================================
@@ -20,3 +21,11 @@ Content-Type: application/json
 ### =========================================
 GET  {{baseUrl}}/pecas
 Content-Type: application/json
+
+
+### =========================================
+### PATCH - Desativar peca
+### =========================================
+PATCH  {{baseUrl}}/pecas/{{peca_id}}/desativar
+Content-Type: application/json
+

@@ -2,6 +2,8 @@
 import * as pecaRepository  from './peca.repository'
 import { RequestPecaDTO } from './peca.dto'
 import * as categoriaRepository from '../categoria/categoria.repository'
+import { idType } from '../../types/IdType'
+import { error } from 'node:console'
 
 export async function createPecaService(data: RequestPecaDTO): Promise<any> {
   const isPecaExists = await pecaRepository.jaExiste(data.nome, data.descricao)
@@ -37,4 +39,21 @@ export async function getAllPecaService() {
 
 
   return getAllCategoria
+}
+
+export async function desativarPeca(id : idType) {
+  const peca = await pecaRepository.getOnlyPeca(id)
+
+  if (!peca) {
+    throw new Error('Peca nao encontrada')
+  }
+
+  if (peca.deletedAt !== null) {
+    throw new Error(`A peca ja esta inativa desde ${peca.deletedAt}`)
+  }
+
+  const pecaDesativada = await pecaRepository.desativarPeca(id)
+
+  return pecaDesativada
+
 }

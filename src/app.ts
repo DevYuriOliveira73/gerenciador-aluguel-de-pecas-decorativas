@@ -2,16 +2,16 @@ import express from "express";
 import router from "./routes/index";
 import { errorHandler } from "./middlewares/errorHandler";
 
-const app = express();
+export function myApp() {
 
-app.use(express.json());
+  const app = express();
+  app.use(express.json());
+  app.use("/api", router);
 
-app.use("/api", router);
+  app.use((req, res) => {
+    res.status(404).json({ error: "Rota não encontrada" });
+  });
 
-app.use((req, res) => {
-  res.status(404).json({ error: "Rota não encontrada" });
-});
-
-app.use(errorHandler)
-
-export default app;
+  app.use(errorHandler)
+  return app;
+}

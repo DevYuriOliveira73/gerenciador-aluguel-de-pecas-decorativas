@@ -1,6 +1,6 @@
 import express from "express";
 import router from "./routes/index";
-import { errorHandler } from "./middlewares/errorHandler";
+import { errorHandler } from "./shared/middlewares/errorHandler";
 
 export function myApp() {
 

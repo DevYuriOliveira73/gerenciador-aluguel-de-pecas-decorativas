@@ -18,25 +18,3 @@ export const updateCategoriaSchema = createCategoriaSchema.partial().refine(
 
 )
 export type updateCategoriaDTO = z.infer<typeof updateCategoriaSchema>
-
-
-
-
-
-
-
-
-
-
-
-
-
-export interface RequestCategoriaDTO {
-  nome: string;
-  descricao: string;
-}
-
-
-export type UpdateRequestCategoriaDTO = RequestCategoriaDTO;
-
-

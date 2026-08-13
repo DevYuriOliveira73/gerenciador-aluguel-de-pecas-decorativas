@@ -1,9 +1,7 @@
 import {prisma} from "../../database/prisma";
-import { RequestCategoriaDTO, updateCategoriaDTO } from "./categoria.dto";
+import { CreateCategoriaDTO, updateCategoriaDTO } from "./categoria.dto";
 
-// export async function createPostRepository(data: CreatePostDTO) : Promise<PostResponseDTO> {
-
-export async function createCategoriaRepository(data: RequestCategoriaDTO): Promise<any> {
+export async function createCategoriaRepository(data: CreateCategoriaDTO): Promise<any> {
 
   const new_categoria = await prisma.categoria.create({
     data: {

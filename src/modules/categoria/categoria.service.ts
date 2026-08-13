@@ -1,6 +1,6 @@
 
 import * as catRepository  from './categoria.repository'
-import { RequestCategoriaDTO } from './categoria.dto'
+import { RequestCategoriaDTO, updateCategoriaDTO } from './categoria.dto'
 
 export async function createCategoriaService(data: RequestCategoriaDTO): Promise<any> {
 
@@ -22,13 +22,16 @@ export async function getAllCategoriaService() {
   return getAllCategoria
 }
 
-export async function updateCategoriaService(id: number, data: RequestCategoriaDTO): Promise<any> {
+export async function updateCategoriaService(id: number, data: updateCategoriaDTO): Promise<any> {
 
-  const isCategoriaExists = await catRepository.getCategoria(data.nome)
+  if (data.nome) {
+    const isCategoriaExists = await catRepository.getCategoria(data.nome)
 
-  if(isCategoriaExists && id !== isCategoriaExists.id) {
-    throw new Error('Categoria já existe')
+    if(isCategoriaExists && id !== isCategoriaExists.id) {
+      throw new Error('Categoria já existe')
+    }
   }
+
 
   const updateCategoria = await catRepository.updateCategoria(id, data)
   return updateCategoria;

@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3001/api
-@id_categoria = 2
+@id_categoria = 3
 
 ### =========================================
 ### POSTS - Criar CATEGORIA
@@ -22,10 +22,10 @@ Content-Type: application/json
 ### =========================================
 ### PUT - Editar categoria
 ### =========================================
-PUT {{baseUrl}}/categorias/{{id_categoria}}
+PATCH {{baseUrl}}/categorias/{{id_categoria}}
 Content-Type: application/json
 
 {
-  "nome" : "Boleira",
-  "descricao" : "[edit] estrutura usada para colocar doces"
+  //"nome" : "Arco de Cobre"
+  "descricao" : "estrutura circular Cobreee"
 }

@@ -1,25 +1,19 @@
 
 import * as pecaRepository  from './peca.repository'
-import { RequestPecaDTO } from './peca.dto'
+import { CreatePecaDTO } from './peca.dto'
 import * as categoriaRepository from '../categoria/categoria.repository'
 import { idType } from '../../types/IdType'
-import { error } from 'node:console'
 
-export async function createPecaService(data: RequestPecaDTO): Promise<any> {
+export async function createPecaService(data: CreatePecaDTO): Promise<any> {
   const isPecaExists = await pecaRepository.jaExiste(data.nome, data.descricao)
   const categoriaExists = await categoriaRepository.getIdCategoria(data.categoria_id)
 
-  if (data.quantidade < 0) {
-    throw new Error("Eh necessario que quantidade > 0")
-  }
-
   if (isPecaExists) {
-    console.error('Nao ta batendo?')
     throw new Error("Já existe uma peça com esse nome e descrição");
   }
 
   if (!categoriaExists) {
-    throw new Error("Categoria nao existe na base de dados.")
+    throw new Error("Categoria não existe na base de dados.")
   }
 
   const dadosNormalizador = {

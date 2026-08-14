@@ -1,9 +1,9 @@
 import {prisma} from "../../database/prisma";
-import { RequestPecaDTO } from "./peca.dto";
+import { CreatePecaDTO } from "./peca.dto";
 import { idType } from '../../types/IdType'
 
 
-export async function createPeca(data: RequestPecaDTO): Promise<any> {
+export async function createPeca(data: CreatePecaDTO): Promise<any> {
 
   const new_peca = await prisma.peca.create({
     data: {

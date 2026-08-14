@@ -1,6 +1,6 @@
 
 import * as pecaRepository  from './peca.repository'
-import { CreatePecaDTO } from './peca.dto'
+import { CreatePecaDTO, UpdatePecaDTO } from './peca.dto'
 import * as categoriaRepository from '../categoria/categoria.repository'
 import { idType } from '../../types/IdType'
 
@@ -49,5 +49,27 @@ export async function desativarPeca(id : idType) {
   const pecaDesativada = await pecaRepository.desativarPeca(id)
 
   return pecaDesativada
+
+}
+
+export async function updatePecaService(id: number, data: UpdatePecaDTO) {
+  const peca = await pecaRepository.getOnlyPeca(id)
+
+  const mudouNome = data.nome && data.nome !== peca.nome;
+  const mudouDescricao = data.descricao && data.descricao !== peca.descricao;
+
+  if (mudouNome || mudouDescricao) {
+    const nomeParaChecar = data.nome ?? peca.nome;
+    const descricaoParaChecar = data.descricao ?? peca.descricao;
+
+    const isPecaExists = await pecaRepository.jaExiste(nomeParaChecar, descricaoParaChecar);
+
+    if (isPecaExists) {
+      throw new Error("Já existe outra peça com este nome e descrição.");
+    }
+  }
+
+  const updatePeca = await pecaRepository.updatePeca(id, data)
+  return updatePeca
 
 }

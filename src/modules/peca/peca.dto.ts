@@ -18,3 +18,20 @@ export const createPecaSchema = z.object({
 })
 
 export type CreatePecaDTO = z.infer<typeof createPecaSchema>
+
+
+export const updatePecaSchema = createPecaSchema
+  .partial()
+  .refine(
+    (data) =>
+      data.nome !== undefined ||
+      data.descricao !== undefined ||
+      data.quantidade !== undefined ||
+      data.categoria_id !== undefined ||
+      data.imagem !== undefined,
+    {
+      message: "Informe ao menos um campo para atualização.",
+    }
+  );
+
+export type UpdatePecaDTO = z.infer<typeof updatePecaSchema>;

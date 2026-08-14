@@ -29,3 +29,35 @@ Content-Type: application/json
 PATCH  {{baseUrl}}/pecas/{{peca_id}}/desativar
 Content-Type: application/json
 
+###############################
+
+### =========================================
+### PUT/PATCH - Atualizar PEÇA (Validação com Sucesso)
+### =========================================
+PATCH {{baseUrl}}/pecas/{{peca_id}}
+Content-Type: application/json
+
+{
+  "nome": "Bandeja Yuri Editada",
+  "quantidade": 7
+}
+
+### =========================================
+### PUT/PATCH - Atualizar PEÇA (Erro: Nenhum campo enviado)
+### =========================================
+PATCH {{baseUrl}}/pecas/{{peca_id}}
+Content-Type: application/json
+
+{}
+
+### =========================================
+### PUT/PATCH - Atualizar PEÇA (Erro: Quantidade inválida)
+### =========================================
+PATCH {{baseUrl}}/pecas/{{peca_id}}
+Content-Type: application/json
+
+{
+  "quantidade": -5
+}
+
+

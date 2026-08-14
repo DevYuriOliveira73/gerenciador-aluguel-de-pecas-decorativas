@@ -18,3 +18,4 @@ export const updateCategoriaSchema = createCategoriaSchema.partial().refine(
 
 )
 export type updateCategoriaDTO = z.infer<typeof updateCategoriaSchema>
+

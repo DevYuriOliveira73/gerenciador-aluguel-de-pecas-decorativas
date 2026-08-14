@@ -51,3 +51,4 @@ export async function updateCategoria(id: number, data: updateCategoriaDTO) {
 
   return updateCategoria;
 }
+

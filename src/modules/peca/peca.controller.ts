@@ -44,3 +44,21 @@ export async function desativarPecaController(req: Request, res: Response, next:
     next(error)
   }
 }
+
+
+export async function updatePecaController(req: Request, res: Response, next: NextFunction) {
+
+  try {
+      const id = Number(req.params.id)
+
+
+      const result = await ServicePeca.updatePecaService(id, req.body)
+
+      return res.status(200).json(result)
+
+    } catch (error) {
+      console.error({error});
+      next(error)
+    }
+
+  }

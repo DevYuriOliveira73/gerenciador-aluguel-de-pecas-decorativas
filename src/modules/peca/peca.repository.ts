@@ -1,5 +1,5 @@
 import {prisma} from "../../database/prisma";
-import { CreatePecaDTO } from "./peca.dto";
+import { CreatePecaDTO, UpdatePecaDTO } from "./peca.dto";
 import { idType } from '../../types/IdType'
 
 
@@ -51,7 +51,6 @@ export async function getOnlyPeca(id : idType): Promise<any> {
   return pecas
 }
 
-
 export async function desativarPeca(id : idType): Promise<any> {
   const pecaIndisponivel = await prisma.peca.update({
     where: {
@@ -61,4 +60,16 @@ export async function desativarPeca(id : idType): Promise<any> {
   })
 
   return pecaIndisponivel;
+}
+
+export async function updatePeca(id: number, data: any) {
+
+  const updatePeca = await prisma.peca.update({
+    where: {id: id},
+    data: {
+      ...data
+    }
+  })
+
+  return updatePeca;
 }
